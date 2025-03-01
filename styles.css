@@ -1,58 +1,115 @@
+/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-h1 {
-    text-align: center;
+    background-image: linear-gradient(to right, #808080, #ffffff); /* Gradiente de cinza para branco da esquerda para a direita */
     color: #333;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
+.container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Adicionando uma animação de fade-in para os produtos */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+#product-list {
+    display: grid; /* Usando grid para organizar os produtos */
+    grid-template-columns: 1fr 1fr; /* Duas colunas */
+    gap: 20px; /* Espaçamento entre os itens */
+    padding: 20px;
 }
 
 li {
-    background-color: #e2e2e2;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    animation: fadeIn 0.5s ease-out;
+    opacity: 0; /* Inicia invisível */
+    list-style: none;
+    margin-bottom: 20px;
 }
 
 li a {
+    display: flex; /* Usando flexbox para alinhar a imagem e o texto */
+    align-items: center; /* Alinha verticalmente os itens */
+    justify-content: left; /* Alinha os itens à esquerda */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo suave para o link */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 15px; /* Espaçamento interno */
     text-decoration: none;
-    color: #007bff;
-    font-weight: bold;
+    color: #111; /* Cor do texto dos links (preto mais escuro) */
+    font-size: 1.5rem; /* Aumento do tamanho da fonte */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Efeito suave para hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave para os links */
+    width: 100%; /* Faz com que o link ocupe toda a largura disponível */
+    max-width: 600px; /* Limita a largura do link para um tamanho legível */
+    margin: 0 auto; /* Centraliza o link */
 }
 
-button {
-    display: block;
+li a:hover {
+    background-color: #f0f0f0; /* Muda a cor de fundo no hover */
+    transform: scale(1.05); /* Efeito de aumento ao passar o mouse */
+}
+
+li img {
+    width: 80px; /* Aumenta o tamanho da imagem */
+    height: 80px; /* Mantém a altura proporcional */
+    margin-right: 20px; /* Espaço entre a imagem e o texto */
+    object-fit: cover; /* Faz com que a imagem se ajuste sem distorcer */
+    border-radius: 8px; /* Bordas arredondadas para as imagens */
+}
+
+/* Estilo para o Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
 
-button:hover {
-    background-color: #218838;
+#preloader img {
+    width: 100px;
+    height: 100px;
+}
+
+/* Esconde o preloader quando o conteúdo é carregado */
+body.loaded #preloader {
+    display: none;
+}
+
+/* Adicionando animação no carregamento da página */
+body {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Fundo com gradiente */
+body {
+    background-image: linear-gradient(to right, #808080, #ffffff); /* Gradiente de cinza para branco da esquerda para a direita */
+    background-size: 100% 100%; /* Para garantir que o gradiente cubra toda a área */
+}
+
+/* Altera a fonte e o tamanho */
+#product-list li {
+    font-family: 'Roboto', sans-serif; /* Fonte Roboto */
+    font-size: 20px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte (500 é médio) */
+    color: #000; /* Cor do texto (preto) */
+    line-height: 1.5; /* Altura da linha */
+    margin-bottom: 10px; /* Espaçamento entre os itens */
 }
